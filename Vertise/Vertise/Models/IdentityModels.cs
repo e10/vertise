@@ -41,7 +41,7 @@ namespace Vertise.Models
         [MaxLength(420)]
         public string Body { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
 
         public DateTime Created { get; set; }
