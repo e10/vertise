@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Vertise.Core.Helpers;
 
 namespace Vertise.Core.Data
 {
@@ -8,10 +9,9 @@ namespace Vertise.Core.Data
             : base("DefaultConnection", throwIfV1Schema: false) {
             }
 
-        public DbSet<Message> Messages { get; set; }
-        public DbSet<Media> Media { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
+            BackendDatabaseHelper.InjectModels(modelBuilder);
         }
 
         public static ApplicationDbContext Create() {

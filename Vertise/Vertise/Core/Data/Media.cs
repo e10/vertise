@@ -3,8 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vertise.Core.Data
 {
-    public class Media {
-        public int Id { get; set; }
+    public class Media : Entity {
 
         [DataType(DataType.Url)]
         public string Url { get; set; }

@@ -1,9 +1,10 @@
 using System.Data.Entity;
+using Vertise.Core.Abstractions;
 using Vertise.Core.Data;
 
 namespace Vertise.Repositories
 {
-    public class UserRepository {
+    public class UserRepository : IHasModelConfiguration{
         internal static void InjectModelConfiguration(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<User>()
                 .HasMany(x => x.Followers)

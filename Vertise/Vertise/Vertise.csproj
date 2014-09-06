@@ -171,12 +171,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Core\Data\ApplicationDbContext.cs" />
-    <Compile Include="Core\Data\Entity.cs" />
     <Compile Include="Core\Abstractions\IEntity.cs" />
     <Compile Include="Core\Abstractions\IRepository.cs" />
     <Compile Include="Core\Abstractions\ISoftDelete.cs" />
+    <Compile Include="Core\Data\Entity.cs" />
     <Compile Include="Core\Data\Media.cs" />
     <Compile Include="Core\Data\Message.cs" />
     <Compile Include="Core\Data\User.cs" />
@@ -192,11 +191,16 @@
     <Compile Include="Migrations\201409061813519_Followers to User.Designer.cs">
       <DependentUpon>201409061813519_Followers to User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409061958090_Entity Moved.cs" />
+    <Compile Include="Migrations\201409061958090_Entity Moved.Designer.cs">
+      <DependentUpon>201409061958090_Entity Moved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EfRepository.cs" />
+    <Compile Include="Repositories\MediaRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -261,11 +265,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Messages\Create.cshtml" />
-    <Content Include="Views\Messages\Delete.cshtml" />
-    <Content Include="Views\Messages\Details.cshtml" />
-    <Content Include="Views\Messages\Edit.cshtml" />
-    <Content Include="Views\Messages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -284,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409061813519_Followers to User.resx">
       <DependentUpon>201409061813519_Followers to User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409061958090_Entity Moved.resx">
+      <DependentUpon>201409061958090_Entity Moved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
