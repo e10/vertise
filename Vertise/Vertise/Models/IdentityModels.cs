@@ -15,6 +15,9 @@ namespace Vertise.Models
     {
         public IList<Message> Messages { get; set; }
 
+        public IList<User> Followers { get; set; }
+        public IList<User> Following { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -66,6 +69,14 @@ namespace Vertise.Models
 
         public DbSet<Message> Messages { get; set; }
         public DbSet<Media> Media { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>()
+                .HasMany(x => x.Followers)
+                .WithMany(x => x.Following)
+                .Map(x => x.MapLeftKey("FollowerId").MapRightKey("FolloweeId").ToTable("Followers"));
+        }
 
         public static ApplicationDbContext Create()
         {

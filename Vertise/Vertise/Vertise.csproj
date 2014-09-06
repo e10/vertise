@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201409061748533_Init.Designer.cs">
       <DependentUpon>201409061748533_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409061813519_Followers to User.cs" />
+    <Compile Include="Migrations\201409061813519_Followers to User.Designer.cs">
+      <DependentUpon>201409061813519_Followers to User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,6 +269,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409061748533_Init.resx">
       <DependentUpon>201409061748533_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409061813519_Followers to User.resx">
+      <DependentUpon>201409061813519_Followers to User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
