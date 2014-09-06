@@ -17,5 +17,7 @@ namespace Vertise.Core.Data
         public static ApplicationDbContext Create() {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Vertise.Core.Data.Message> Messages { get; set; }
     }
 }

@@ -4,7 +4,8 @@ using Vertise.Core.Data;
 
 namespace Vertise.Repositories
 {
-    public class MediaRepository : EfRepository<Media>, IHasModelConfiguration {
+    public interface IMediaRepository : IRepository<Media>{}
+    public class MediaRepository : EfRepository<Media>,IMediaRepository, IHasModelConfiguration {
         public MediaRepository(DbContext db) : base(db) { }
         internal static void InjectModelConfiguration(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<Media>()

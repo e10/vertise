@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Vertise.Core.Abstractions;
 using Vertise.Core.Data;
@@ -18,7 +19,7 @@ namespace Vertise.Repositories {
         }
 
         public IQueryable<T> All {
-            get { return _set; }
+            get { return _set.Where(x=>!x.IsDeleted); }
         }
 
         public void AddOrUpdate(T entity)
@@ -43,6 +44,26 @@ namespace Vertise.Repositories {
         public int SaveChanges()
         {
             return _db.SaveChanges();
+        }
+
+
+        public T ById(int id)
+        {
+            return All.FirstOrDefault(x => x.Id == id);
+        }
+
+
+        public Task<T> ByIdAsync(int id) {
+            return All.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            return _db.SaveChangesAsync();
+        }
+
+        public void Dispose() {
+            //_db.Dispose();
         }
     }
 }
