@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Vertise.Core.Data;
 using Vertise.Models;
+using Vertise.Services;
 
 namespace Vertise
 {

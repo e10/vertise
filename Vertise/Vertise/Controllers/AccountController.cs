@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Vertise.Core.Data;
 using Vertise.Models;
+using Vertise.Services;
 
 namespace Vertise.Controllers
 {
