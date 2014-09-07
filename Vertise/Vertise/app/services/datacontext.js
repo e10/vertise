@@ -20,9 +20,9 @@
         }
 
         function getMessages(id) {
-            var filter = '';
+            var filter = '&$top=20';
             if (id > 0) {
-                filter = '&$filter=Id gt ' + id;
+                filter += '&$filter=Id gt ' + id;
             }
 
             return $http.get('/api/messages?$inlinecount=allpages&$orderby=Id desc'+filter)
