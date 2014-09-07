@@ -1,5 +1,7 @@
 ﻿(function () { 
     'use strict';
+
+    var appName = 'Vetrise';
     
     var controllerId = 'shell';
     angular.module('app').controller(controllerId,
@@ -11,6 +13,7 @@
         var events = config.events;
         vm.busyMessage = 'Please wait ...';
         vm.isBusy = true;
+        vm.title = appName;
         vm.spinnerOptions = {
             radius: 40,
             lines: 7,
@@ -25,7 +28,7 @@
         activate();
 
         function activate() {
-            logSuccess('Hot Towel Angular loaded!', null, true);
+            logSuccess(appName+' loaded!', null, true);
             common.activateController([], controllerId);
         }
 
