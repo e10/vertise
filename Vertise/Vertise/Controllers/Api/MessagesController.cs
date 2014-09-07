@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Web.Http.OData.Query;
+using AutoMapper.QueryableExtensions;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using AutoMapper.QueryableExtensions;
+using System.Web.Http.OData;
 using Vertise.Core.Data;
 using Vertise.Repositories;
 using Vertise.ViewModels;
@@ -17,7 +14,7 @@ using Vertise.ViewModels;
 namespace Vertise.Controllers.Api
 {
     [Authorize]
-    public class MessagesController : ApiController
+    public class MessagesController : BasicApiController
     {
         private readonly IMessageRepository _repository;
 
@@ -27,9 +24,9 @@ namespace Vertise.Controllers.Api
         }
 
         // GET: api/Messages
-        public IQueryable<MessageResult> GetMessages()
+        public PageResult<MessageResult> GetMessages(ODataQueryOptions<MessageResult> options)
         {
-            return _repository.All.Project().To<MessageResult>();
+            return Page(_repository.All.Project().To<MessageResult>(),options);
         }
 
         // GET: api/Messages/5
