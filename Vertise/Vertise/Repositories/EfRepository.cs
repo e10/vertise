@@ -65,5 +65,10 @@ namespace Vertise.Repositories {
         public void Dispose() {
             //_db.Dispose();
         }
+
+        public bool Any(int id)
+        {
+            return All.Any(x => x.Id == id);
+        }
     }
 }

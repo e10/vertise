@@ -11,6 +11,7 @@ namespace Vertise.Core.Abstractions {
         Task<T> ByIdAsync(int id);
         void AddOrUpdate(T entity);
         void Delete(T entity);
+        bool Any(int id);
         int SaveChanges();
         Task<int> SaveChangesAsync();
     }

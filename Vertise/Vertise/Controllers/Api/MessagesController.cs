@@ -36,11 +36,8 @@ namespace Vertise.Controllers.Api
         [ResponseType(typeof(Message))]
         public async Task<IHttpActionResult> GetMessage(int id)
         {
-            Message message = await _repository.ByIdAsync(id);
-            if (message == null)
-            {
-                return NotFound();
-            }
+            var message = await _repository.ByIdAsync(id);
+            if (message == null){ return NotFound(); }
 
             return Ok(message);
         }
@@ -49,34 +46,18 @@ namespace Vertise.Controllers.Api
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutMessage(int id, Message message)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != message.Id)
-            {
-                return BadRequest();
-            }
-
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            if (id != message.Id) { return BadRequest(); }
             _repository.AddOrUpdate(message);
-
             try
             {
                 await _repository.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MessageExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                if (!_repository.Any(id)){ return NotFound(); }
+                throw;
             }
-
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -84,14 +65,9 @@ namespace Vertise.Controllers.Api
         [ResponseType(typeof(Message))]
         public async Task<IHttpActionResult> PostMessage(Message message)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+            if (!ModelState.IsValid){ return BadRequest(ModelState); }
             _repository.AddOrUpdate(message);
             await _repository.SaveChangesAsync();
-
             return CreatedAtRoute("DefaultApi", new { id = message.Id }, message);
         }
 
@@ -99,31 +75,16 @@ namespace Vertise.Controllers.Api
         [ResponseType(typeof(Message))]
         public async Task<IHttpActionResult> DeleteMessage(int id)
         {
-            Message message = await _repository.ByIdAsync(id);
-            if (message == null)
-            {
-                return NotFound();
-            }
-
-            
+            var message = await _repository.ByIdAsync(id);
+            if (message == null){ return NotFound(); }
             _repository.Delete(message);
             await _repository.SaveChangesAsync();
-
             return Ok(message);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _repository.Dispose();
-            }
+        protected override void Dispose(bool disposing){
+            if (disposing){ _repository.Dispose();}
             base.Dispose(disposing);
-        }
-
-        private bool MessageExists(int id)
-        {
-            return _repository.All.Count(e => e.Id == id) > 0;
         }
     }
 }
