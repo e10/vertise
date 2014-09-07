@@ -273,6 +273,7 @@
     <Content Include="app\vendors\angular-gravatar\md5.min.js" />
     <Content Include="app\vendors\momentjs\angular-moment.min.js" />
     <Content Include="app\vendors\momentjs\moment.min.js" />
+    <Content Include="app\vendors\twitter\twitter-text-1.9.4.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

@@ -10,18 +10,25 @@
 
         var service = {
             getMessages: getMessages,
-            getMessageCount: getMessageCount
+            shout: postMessage
         };
 
         return service;
 
-        function getMessageCount() { return $q.when(72); }
+        function postMessage(msg) {
+            return $http.post('/api/messages', { Body: msg });
+        }
 
-        function getMessages() {
-            return $http({ method: 'GET', url: '/api/messages?$inlinecount=allpages' })
+        function getMessages(id) {
+            var filter = '';
+            if (id > 0) {
+                filter = '&$filter=Id ge ' + id;
+            }
+
+            return $http.get('/api/messages?$inlinecount=allpages&$orderby=Id desc'+filter)
             .then(function (data, status, headers, config) {
                 return $.when(data.data);
             });
-        }
+        }   
     }
 })();

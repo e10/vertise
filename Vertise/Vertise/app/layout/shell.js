@@ -1,7 +1,7 @@
 ﻿(function () { 
     'use strict';
 
-    var appName = 'Vetrise';
+    var appName = 'Vertise';
     
     var controllerId = 'shell';
     angular.module('app').controller(controllerId,

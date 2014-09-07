@@ -17,7 +17,7 @@ namespace Vertise.ViewModels {
 
     public class MessageCreateModel
     {
-        [MaxLength(420)]
+        [MaxLength(420),Required]
         public string Body { get; set; }
 
         internal Message ToEntity(string user)

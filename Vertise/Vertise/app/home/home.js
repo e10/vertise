@@ -9,27 +9,32 @@
 
         var vm = this;
         vm.messageCount = 0;
+        vm.message = '';
+        vm.lastID = 0;
         vm.messages = [];
         vm.title = 'Home';
+        vm.shout = shout;
 
         activate();
 
+        function shout() {
+            datacontext.shout(vm.message).then(function () {
+                vm.message = '';
+                return getMessages();
+            });
+        }
+
         function activate() {
-            var promises = [getMessageCount(), getMessages()];
+            var promises = [getMessages()];
             common.activateController(promises, controllerId)
                 .then(function () { log('Welcome!'); });
         }
 
-        function getMessageCount() {
-            return datacontext.getMessageCount().then(function (data) {
-                return vm.messageCount = data;
-            });
-        }
-
         function getMessages() {
-            return datacontext.getMessages().then(function (data) {
-                vm.messageCount=data.Count;
-                return vm.messages = data.Items;
+            return datacontext.getMessages(vm.lastID).then(function (data) {
+                vm.messageCount = data.Count;
+                if (data.Items.length > 0) { vm.lastID = data.Items[0].Id; }
+                return vm.messages = data.Items.concat(vm.messages);
             });
         }
     }

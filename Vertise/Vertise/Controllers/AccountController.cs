@@ -400,6 +400,11 @@ namespace Vertise.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult Logout() {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]

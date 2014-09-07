@@ -20,7 +20,7 @@
     function getRoutes() {
         return [
             {
-                url: '/',
+                url: '#/',
                 config: {
                     templateUrl: 'app/home/home.html',
                     title: 'Home',
@@ -29,18 +29,16 @@
                         content: '<i class="fa fa-dashboard"></i> Home'
                     }
                 }
+            }, {
+                url: '/account/logout',
+                config: {
+                    title: 'Logout',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-sign-out"></i> Logout'
+                    }
+                }
             }
-            //}, {
-            //    url: '/admin',
-            //    config: {
-            //        title: 'admin',
-            //        templateUrl: 'app/admin/admin.html',
-            //        settings: {
-            //            nav: 2,
-            //            content: '<i class="fa fa-lock"></i> Admin'
-            //        }
-            //    }
-            //}
         ];
     }
 })();

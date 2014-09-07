@@ -11,6 +11,10 @@
     /*font-weight: 400;*/
 }
 
+textarea {
+    width: 100%;
+}
+
 .btn, .badge, .modal, .modal-dialog, .modal-content,
 input, select {
     -ms-border-radius: 0 !important;
