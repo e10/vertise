@@ -1,0 +1,31 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="home as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <textarea rows="3" ng-model="vm.message" placeholder="Compose your message..."></textarea>
+                    </div>
+                    <div class="row">
+                        <button type="submit" ng-click="vm.shout()" class="btn btn-default pull-right">Submit</button>
+                    </div>
+                    <div class="row">
+                        <ul class="today-datas" data-ng-repeat="p in vm.messages">
+                            <li class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <img class="img-rounded" gravatar-src="'{{p.UserEmail}}'" gravatar-size="42" alt="{{p.UserId}}">
+                                    </div>
+                                    <div class="col-md-11">
+                                        <span class="bold">{{p.Body}}</span><br />
+                                        <small><a href="mailto:{{p.UserUserName}}">{{p.UserId}}</a> {{p.Created|amCalendar}}</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
