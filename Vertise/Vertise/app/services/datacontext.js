@@ -22,7 +22,7 @@
         function getMessages(id) {
             var filter = '';
             if (id > 0) {
-                filter = '&$filter=Id ge ' + id;
+                filter = '&$filter=Id gt ' + id;
             }
 
             return $http.get('/api/messages?$inlinecount=allpages&$orderby=Id desc'+filter)

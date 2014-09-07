@@ -20,7 +20,8 @@
     function getRoutes() {
         return [
             {
-                url: '#/',
+                url: '/',
+                link:'#/',
                 config: {
                     templateUrl: 'app/home/home.html',
                     title: 'Home',
@@ -31,8 +32,10 @@
                 }
             }, {
                 url: '/account/logout',
+                link: '/account/logout',
                 config: {
                     title: 'Logout',
+                    templateUrl: 'app/out/home.html',
                     settings: {
                         nav: 2,
                         content: '<i class="fa fa-sign-out"></i> Logout'
