@@ -17,8 +17,10 @@
                                         <img class="img-rounded" gravatar-src="'{{p.UserEmail}}'" gravatar-size="42" alt="{{p.UserId}}">
                                     </div>
                                     <div class="col-md-11">
-                                        <span class="bold" ng-bind-html="p.Body | msg"></span><br />
-                                        <small><a href="#/{{p.UserUserName}}">{{p.UserUserName}}</a> {{p.Created|amCalendar}}</small>
+                                        <blockquote>
+                                            <p ng-bind-html="p.Body | msg"></p>
+                                            <footer><a href="#/{{p.UserUserName}}">{{p.UserUserName}}</a> <cite title="{{p.Created}}">{{p.Created|amCalendar}}</cite></footer>
+                                        </blockquote>
                                     </div>
                                 </div>
                             </li>
