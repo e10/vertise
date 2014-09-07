@@ -22,24 +22,25 @@
             {
                 url: '/',
                 config: {
-                    templateUrl: 'app/dashboard/dashboard.html',
-                    title: 'dashboard',
+                    templateUrl: 'app/home/home.html',
+                    title: 'Home',
                     settings: {
                         nav: 1,
-                        content: '<i class="fa fa-dashboard"></i> Dashboard'
-                    }
-                }
-            }, {
-                url: '/admin',
-                config: {
-                    title: 'admin',
-                    templateUrl: 'app/admin/admin.html',
-                    settings: {
-                        nav: 2,
-                        content: '<i class="fa fa-lock"></i> Admin'
+                        content: '<i class="fa fa-dashboard"></i> Home'
                     }
                 }
             }
+            //}, {
+            //    url: '/admin',
+            //    config: {
+            //        title: 'admin',
+            //        templateUrl: 'app/admin/admin.html',
+            //        settings: {
+            //            nav: 2,
+            //            content: '<i class="fa fa-lock"></i> Admin'
+            //        }
+            //    }
+            //}
         ];
     }
 })();

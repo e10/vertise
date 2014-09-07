@@ -9,19 +9,18 @@
         var $http = common.$http;
 
         var service = {
-            getPeople: getPeople,
+            getMessages: getMessages,
             getMessageCount: getMessageCount
         };
 
         return service;
 
-
         function getMessageCount() { return $q.when(72); }
 
-        function getPeople() {
+        function getMessages() {
             return $http({ method: 'GET', url: '/api/messages?$inlinecount=allpages' })
             .then(function (data, status, headers, config) {
-                return $.when(data.data.Items);
+                return $.when(data.data);
             });
         }
     }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
+using Microsoft.AspNet.Identity;
 using Vertise.Core.Data;
 using Vertise.Repositories;
 using Vertise.ViewModels;
@@ -39,30 +40,12 @@ namespace Vertise.Controllers.Api
             return Ok(message);
         }
 
-        // PUT: api/Messages/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMessage(int id, Message message)
-        {
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
-            if (id != message.Id) { return BadRequest(); }
-            _repository.AddOrUpdate(message);
-            try
-            {
-                await _repository.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_repository.Any(id)){ return NotFound(); }
-                throw;
-            }
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Messages
         [ResponseType(typeof(Message))]
-        public async Task<IHttpActionResult> PostMessage(Message message)
+        public async Task<IHttpActionResult> PostMessage(MessageCreateModel model)
         {
             if (!ModelState.IsValid){ return BadRequest(ModelState); }
+            var message = model.ToEntity(User.Identity.GetUserId());
             _repository.AddOrUpdate(message);
             await _repository.SaveChangesAsync();
             return CreatedAtRoute("DefaultApi", new { id = message.Id }, message);

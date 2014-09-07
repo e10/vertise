@@ -259,8 +259,8 @@
     <Content Include="app\config.exceptionHandler.js" />
     <Content Include="app\config.js" />
     <Content Include="app\config.route.js" />
-    <Content Include="app\dashboard\dashboard.html" />
-    <Content Include="app\dashboard\dashboard.js" />
+    <Content Include="app\home\home.html" />
+    <Content Include="app\home\home.js" />
     <Content Include="app\layout\shell.html" />
     <Content Include="app\layout\shell.js" />
     <Content Include="app\layout\sidebar.html" />
@@ -269,6 +269,10 @@
     <Content Include="app\layout\widgetheader.html" />
     <Content Include="app\services\datacontext.js" />
     <Content Include="app\services\directives.js" />
+    <Content Include="app\vendors\angular-gravatar\angular-gravatar.min.js" />
+    <Content Include="app\vendors\angular-gravatar\md5.min.js" />
+    <Content Include="app\vendors\momentjs\angular-moment.min.js" />
+    <Content Include="app\vendors\momentjs\moment.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

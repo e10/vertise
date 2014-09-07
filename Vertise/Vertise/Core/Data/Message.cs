@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Vertise.Core.Data
 {
     public class Message : Entity {
+
         [MaxLength(420)]
         public string Body { get; set; }
 
